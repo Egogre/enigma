@@ -1,7 +1,4 @@
-require 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
-require_relative '../lib/string_encryptor'
+require './test_helper'
 
 class StringEncryptorTest < Minitest::Test
   attr_reader :encryptor

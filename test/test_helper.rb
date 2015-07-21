@@ -1,0 +1,7 @@
+require 'minitest'
+require 'minitest/autorun'
+require 'minitest/pride'
+require_relative '../lib/string_encryptor'
+require_relative '../lib/key_generator'
+require_relative '../lib/offset_calculator'
+require_relative '../lib/rotation_calculator'
