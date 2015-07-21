@@ -1,10 +1,10 @@
-require './test_helper'
+require './test/test_helper'
 
 class OffsetCalculatorTest < Minitest::Test
   attr_reader :ocalc
   
   def setup
-    file = File.open('./sample_message.txt')
+    file = File.open('./test/sample_message.txt')
     message_date = file.mtime
     @ocalc = OffsetCalculator.new(message_date)
   end

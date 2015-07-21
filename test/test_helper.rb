@@ -1,7 +1,11 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/string_encryptor'
-require_relative '../lib/key_generator'
-require_relative '../lib/offset_calculator'
-require_relative '../lib/rotation_calculator'
+require './lib/string_encryptor'
+require './lib/key_generator'
+require './lib/offset_calculator'
+require './lib/rotation_calculator'
+require './lib/encrypt'

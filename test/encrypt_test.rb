@@ -1,19 +1,14 @@
-require './test_helper'
+require './test/test_helper'
 
 class EncryptTest < Minitest::Test
   
   def test_user_happy_path
-    input_file = File.open('./sample_message.txt')
-    string = input_file.read
-    encryptor = StringEncryptor.new(string)
-    encrypted_string = encryptor.encrypt
-    output_file = File.new('./encrypted_message.txt', 'w')
-    output_file.write(encrypted_string)
-    output_file.flush
-    output_file.rewind
-    check_read = output_file.read
-    
-    refute string == check_read
+    skip
+    read_file = File.open('./test/sample_message.txt')
+    write_file = File.new('./test/encrypted_message.txt', 'w')
+    encryptor = Encrypt.new(read_file, write_file)
+    encrypted_file = encryptor.encrypt_file
+
     
     expected = string.length
     actual = check_read.length
