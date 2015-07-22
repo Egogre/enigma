@@ -5,7 +5,7 @@ class RotationCalculator
     @key = key
   end
   
-  def rotation
+  def rotations
     {:A_rotation => a_rotation,
      :B_rotation => b_rotation,
      :C_rotation => c_rotation,

@@ -1,24 +1,19 @@
-require './lib/key_generator'
 require './lib/offset_calculator'
 require './lib/rotation_calculator'
-require './lib/string_encryptor'
+require './lib/string_decryptor'
 
-class Encrypt
+class Decrypt
   attr_reader :read_file, :write_file, :key
   
-  def initialize(read_file, write_file, key = encryption_key)
+  def initialize(read_file, write_file, key)
     @read_file = read_file
     @write_file = write_file
     @key = key
   end
   
-  def encrypt_file
-    write_file.write(encrypted_string)
+  def decrypt_file
+    write_file.write(decrypted_string)
     write_file.flush
-  end
-  
-  def encryption_key
-    KeyGenerator.new.key
   end
   
   private
@@ -28,7 +23,7 @@ class Encrypt
   end
   
   def file_date
-    write_file.birthtime
+    read_file.birthtime
   end
   
   def offsets
@@ -39,10 +34,11 @@ class Encrypt
     RotationCalculator.new(key).rotations
   end
   
-  def encrypted_string
-    encryptor = StringEncryptor.new(file_string, rotations, offsets)
-    encryptor.encrypt_string
+  def decrypted_string
+    decryptor = StringDecryptor.new(file_string, rotations, offsets)
+    decryptor.decrypt_string
   end
+  
   
 end
 
@@ -52,9 +48,9 @@ if __FILE__ == $0
   read_file = File.open(input_file)
   output_file = ARGV[1]
   write_file = File.new(output_file, 'w')
-  key = ARGV[2].to_i
-  encryptor = Encrypt.new(read_file, write_file)
-  encryptor.encrypt_file
-  p "Created #{ARGV[1]} with the key '#{encryptor.key}' and date '#{write_file.birthtime}'"
+  key = ARGV[2]
+  decryptor = Decrypt.new(read_file, write_file, key)
+  decryptor.decrypt_file
+  p "Created #{ARGV[1]} with the key '#{decryptor.key}' and date '#{read_file.birthtime}'"
   write_file.close
 end

@@ -13,7 +13,7 @@ class RotationCalculatorTest < Minitest::Test
                 :B_rotation => 23,
                 :C_rotation => 34,
                 :D_rotation => 45}
-    actual = rcalc.rotation
+    actual = rcalc.rotations
     
     assert_equal expected, actual
   end

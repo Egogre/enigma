@@ -5,7 +5,7 @@ class OffsetCalculatorTest < Minitest::Test
   
   def setup
     file = File.open('./test/sample_message.txt')
-    message_date = file.mtime
+    message_date = file.birthtime
     @ocalc = OffsetCalculator.new(message_date)
   end
   
@@ -21,7 +21,7 @@ class OffsetCalculatorTest < Minitest::Test
                 :B_offset => 2,
                 :C_offset => 2,
                 :D_offset => 5}
-    actual = ocalc.offset
+    actual = ocalc.offsets
     
     assert_equal expected, actual
   end

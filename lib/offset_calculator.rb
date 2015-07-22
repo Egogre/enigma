@@ -11,7 +11,7 @@ class OffsetCalculator
     (day_string + two_digit_month_string + two_digit_year_string).to_i
   end
   
-  def offset
+  def offsets
     {:A_offset => a_offset,
      :B_offset => b_offset,
      :C_offset => c_offset,
