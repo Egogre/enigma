@@ -4,11 +4,12 @@ require './lib/string_decryptor'
 require './lib/key_cracker'
 
 class Crack
-  attr_reader :read_file, :write_file
+  attr_reader :read_file, :write_file, :date
   
-  def initialize(read_file, write_file)
+  def initialize(read_file, write_file, date = file_date)
     @read_file = read_file
     @write_file = write_file
+    @date = date
   end
   
   def crack_file
@@ -37,7 +38,7 @@ class Crack
   end
   
   def offsets
-    OffsetCalculator.new(file_date).offsets
+    OffsetCalculator.new(date).offsets
   end
   
   def cracked_rotations
@@ -57,9 +58,9 @@ if __FILE__ == $0
   read_file = File.open(input_file)
   output_file = ARGV[1]
   write_file = File.new(output_file, 'w')
-  key = ARGV[2]
+  date = ARGV[2]
   cracker = Crack.new(read_file, write_file)
   cracker.crack_file
-  p "Created #{ARGV[1]} with the cracked key '#{cracker.cracked_key}' and date '#{read_file.birthtime}'"
+  p "Created #{ARGV[1]} with the cracked key '#{cracker.cracked_key}' and date '#{cracker.date}'"
   write_file.close
 end

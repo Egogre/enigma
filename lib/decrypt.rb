@@ -3,12 +3,13 @@ require './lib/rotation_calculator'
 require './lib/string_decryptor'
 
 class Decrypt
-  attr_reader :read_file, :write_file, :key
+  attr_reader :read_file, :write_file, :key, :date
   
-  def initialize(read_file, write_file, key)
+  def initialize(read_file, write_file, key, date = file_date)
     @read_file = read_file
     @write_file = write_file
     @key = key
+    @date = date
   end
   
   def decrypt_file
@@ -27,7 +28,7 @@ class Decrypt
   end
   
   def offsets
-    OffsetCalculator.new(file_date).offsets
+    OffsetCalculator.new(date).offsets
   end
   
   def rotations
@@ -49,8 +50,9 @@ if __FILE__ == $0
   output_file = ARGV[1]
   write_file = File.new(output_file, 'w')
   key = ARGV[2]
-  decryptor = Decrypt.new(read_file, write_file, key)
+  date = ARGV[3]
+  decryptor = Decrypt.new(read_file, write_file, key, date)
   decryptor.decrypt_file
-  p "Created #{ARGV[1]} with the key '#{decryptor.key}' and date '#{read_file.birthtime}'"
+  p "Created decrypted file, #{ARGV[1]} with the key '#{decryptor.key}' and date '#{decryptor.date}'"
   write_file.close
 end

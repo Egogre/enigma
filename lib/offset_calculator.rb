@@ -1,7 +1,18 @@
 class OffsetCalculator
-  attr_reader :day, :month, :year
+  attr_reader :message_date, :day, :month, :year
   
   def initialize(message_date)
+    @message_date = given_date(message_date) if message_date.class == String
+    @message_date = get_date(message_date) if message_date.class == Time
+  end
+  
+  def given_date(message_date)
+    @day = message_date[0..1]
+    @month = message_date[2..3]
+    @year = message_date[4..5]
+  end
+  
+  def get_date(message_date)
     @day = message_date.day
     @month = message_date.month
     @year = message_date.year
@@ -38,6 +49,8 @@ class OffsetCalculator
   end
   
   def a_offset
+    require 'pry'; binding.pry
+
     date_squared_string[-5].to_i
   end
   
