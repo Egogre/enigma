@@ -78,33 +78,7 @@ class KeyCrackerTest < Minitest::Test
     
     assert_equal expected, actual
   end
-  
-  def test_it_tests_for_rotating_all_the_way_through
-    expected = [["24", "90"], ["46"], ["01", "67"], ["08", "74"], ["24", "90"]]
-    actual = key_cracker.rotation_options
-    
-    assert_equal expected, actual
-  end
-  
-  def test_it_compares_options_for_fit
-    refute key_cracker.judge_key_fragments("24", "35")
-    assert key_cracker.judge_key_fragments("24", "45")
-  end
-  
-  def test_it_selects_based_on_judgement
-    expected = [["24"], ["46"], ["67"], ["74"]]
-    actual = key_cracker.working_key_fragments
-    
-    assert_equal expected, actual
-  end
-  
-  def test_it_verifies_with_e_possibles
-    expected = ["24", "46", "67", "74", "24"]
-    actual = key_cracker.confirmed_fragments
-    
-    assert_equal expected, actual
-  end
-  
+
   def test_it_builds_key
     expected = original_key_used
     actual = key_cracker.build_key
