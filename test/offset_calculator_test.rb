@@ -4,7 +4,7 @@ class OffsetCalculatorTest < Minitest::Test
   attr_reader :ocalc
   
   def setup
-    file = File.open('./test/sample_message.txt')
+    file = File.open('./test/sample_files/sample_message.txt')
     message_date = file.birthtime
     @ocalc = OffsetCalculator.new(message_date)
   end

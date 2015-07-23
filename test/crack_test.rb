@@ -3,15 +3,15 @@ require './test/test_helper'
 class CrackTest < Minitest::Test
   
   def test_user_happy_path
-    read_file = File.open('./test/crack_me_test.txt')
-    write_file = File.new('./test/cracked_message.txt', 'w')
+    read_file = File.open('./test/sample_files/crack_me_test.txt')
+    write_file = File.new('./test/sample_files/cracked_message.txt', 'w')
     cracker = Crack.new(read_file, write_file)
     cracker.crack_file
-    check_file = File.open('./test/cracked_message.txt')
+    check_file = File.open('./test/sample_files/cracked_message.txt')
     check_read = check_file.read
     read_file.rewind
     test_read = read_file.read
-    original_file = File.open('./test/message_to_encode_for_cracking.txt')
+    original_file = File.open('./test/sample_files/message_to_encode_for_cracking.txt')
     original_read = original_file.read
     read_file.close
     check_file.close
