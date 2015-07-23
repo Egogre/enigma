@@ -18,9 +18,10 @@ class OffsetCalculatorTest < Minitest::Test
   
   def test_it_calculates_offset
     expected = {:A_offset => 1,
-                :B_offset => 2,
+                :B_offset => 1,
                 :C_offset => 2,
-                :D_offset => 5}
+                :D_offset => 2,
+                :E_offset => 5}
     actual = ocalc.offsets
     
     assert_equal expected, actual

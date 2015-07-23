@@ -5,8 +5,8 @@ class StringEncryptorTest < Minitest::Test
   
   def setup
     @sample_string = "Hello. This is not encrypted."
-    rotations = {:A_rotation => 12, :B_rotation => 23, :C_rotation => 34, :D_rotation => 45}
-    offsets = {:A_offset => 1, :B_offset => 2, :C_offset => 3, :D_offset => 4}
+    rotations = {:A_rotation => 12, :B_rotation => 23, :C_rotation => 34, :D_rotation => 45, :E_rotation => 15}
+    offsets = {:A_offset => 1, :B_offset => 2, :C_offset => 3, :D_offset => 4, :E_offset => 5}
     @encryptor = StringEncryptor.new(sample_string, rotations, offsets)
   end
   
@@ -34,7 +34,7 @@ class StringEncryptorTest < Minitest::Test
   
   def test_it_encrypts_string 
     # skip   
-    expected = "U3IU1WhCu7PtvDhW1EhN01Oh2EBMK"
+    expected = "U3IU8KV4Q25VFbQ0\nQty01Oh963Au"
     actual = encryptor.encrypt_string
     
     assert_equal expected, actual

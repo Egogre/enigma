@@ -15,7 +15,8 @@ class OffsetCalculator
     {:A_offset => a_offset,
      :B_offset => b_offset,
      :C_offset => c_offset,
-     :D_offset => d_offset}
+     :D_offset => d_offset,
+     :E_offset => e_offset}
   end
   
   private
@@ -37,18 +38,22 @@ class OffsetCalculator
   end
   
   def a_offset
-    date_squared_string[-4].to_i
+    date_squared_string[-5].to_i
   end
   
   def b_offset
-    date_squared_string[-3].to_i
+    date_squared_string[-4].to_i
   end
   
   def c_offset
-    date_squared_string[-2].to_i
+    date_squared_string[-3].to_i
   end
   
   def d_offset
+    date_squared_string[-2].to_i
+  end
+  
+  def e_offset
     date_squared_string[-1].to_i
   end
   

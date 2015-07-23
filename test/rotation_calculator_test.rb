@@ -12,7 +12,8 @@ class RotationCalculatorTest < Minitest::Test
     expected = {:A_rotation => 12,
                 :B_rotation => 23,
                 :C_rotation => 34,
-                :D_rotation => 45}
+                :D_rotation => 45,
+                :E_rotation => 15}
     actual = rcalc.rotations
     
     assert_equal expected, actual

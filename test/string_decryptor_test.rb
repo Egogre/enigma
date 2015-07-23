@@ -4,19 +4,18 @@ class StringDecryptorTest < Minitest::Test
   attr_reader :decryptor, :sample_string
   
   def setup
-    @sample_string = "U3IU1WhCu7PtvDhW1EhN01Oh2EBMK"
-    rotations = {:A_rotation => 12, :B_rotation => 23, :C_rotation => 34, :D_rotation => 45}
-    offsets = {:A_offset => 1, :B_offset => 2, :C_offset => 3, :D_offset => 4}
+    @sample_string = "U3IU8KV4Q25VFbQ0\nQty01Oh963Au"
+    rotations = {:A_rotation => 12, :B_rotation => 23, :C_rotation => 34, :D_rotation => 45, :E_rotation => 15}
+    offsets = {:A_offset => 1, :B_offset => 2, :C_offset => 3, :D_offset => 4, :E_offset => 5}
     @decryptor = StringDecryptor.new(sample_string, rotations, offsets)
   end
   
   def test_it_prepares_string
-    expected = ["U", "3", "I", "U", "1",
-                "W", "h", "C", "u", "7",
-                "P", "t", "v", "D", "h",
-                "W", "1", "E", "h", "N",
-                "0", "1", "O", "h", "2",
-                "E", "B", "M", "K"] 
+    expected = ["U", "3", "I", "U", "8", "K",
+                "V", "4", "Q", "2", "5", "V",
+                "F", "b", "Q", "0", "\n", "Q",
+                "t", "y", "0", "1", "O", "h",
+                "9", "6", "3", "A", "u"] 
     actual = decryptor.prepared_string
     
     assert_equal expected, actual

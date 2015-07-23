@@ -78,19 +78,29 @@ class StringDecryptor
     offsets[:D_offset]
   end
   
+  def e_rotation
+    rotations[:E_rotation]
+  end
+  
+  def e_offset
+    offsets[:E_offset]
+  end
+  
   def which_rotation(index)
-    rotation = a_rotation if (index % 4) == 0
-    rotation = b_rotation if (index % 4) == 1
-    rotation = c_rotation if (index % 4) == 2
-    rotation = d_rotation if (index % 4) == 3
+    rotation = a_rotation if (index % 5) == 0
+    rotation = b_rotation if (index % 5) == 1
+    rotation = c_rotation if (index % 5) == 2
+    rotation = d_rotation if (index % 5) == 3
+    rotation = e_rotation if (index % 5) == 4
     rotation
   end
   
   def which_offset(index)
-    offset = a_offset if (index % 4) == 0
-    offset = b_offset if (index % 4) == 1
-    offset = c_offset if (index % 4) == 2
-    offset = d_offset if (index % 4) == 3
+    offset = a_offset if (index % 5) == 0
+    offset = b_offset if (index % 5) == 1
+    offset = c_offset if (index % 5) == 2
+    offset = d_offset if (index % 5) == 3
+    offset = e_offset if (index % 5) == 4
     offset
   end
   

@@ -9,7 +9,8 @@ class RotationCalculator
     {:A_rotation => a_rotation,
      :B_rotation => b_rotation,
      :C_rotation => c_rotation,
-     :D_rotation => d_rotation}
+     :D_rotation => d_rotation,
+     :E_rotation => e_rotation}
   end
   
   private
@@ -28,6 +29,10 @@ class RotationCalculator
   
   def d_rotation
     key.to_s[3..4].to_i
+  end
+  
+  def e_rotation
+    (key.to_s[0] + key.to_s[-1]).to_i
   end
   
 end
