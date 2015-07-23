@@ -5,11 +5,12 @@ require './lib/string_decryptor'
 class Decrypt
   attr_reader :read_file, :write_file, :key, :date
   
-  def initialize(read_file, write_file, key, date = file_date)
+  def initialize(read_file, write_file, key, date = nil)
     @read_file = read_file
     @write_file = write_file
     @key = key
     @date = date
+    @date = file_date if date == nil
   end
   
   def decrypt_file

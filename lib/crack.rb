@@ -6,10 +6,11 @@ require './lib/key_cracker'
 class Crack
   attr_reader :read_file, :write_file, :date
   
-  def initialize(read_file, write_file, date = file_date)
+  def initialize(read_file, write_file, date = nil)
     @read_file = read_file
     @write_file = write_file
     @date = date
+    @date = file_date if date == nil
   end
   
   def crack_file

@@ -63,9 +63,11 @@ class KeyCracker
   
   def build_key
     key_judicator = KeyJudger.new(build_rotations)
+    
     key_piece_a = key_judicator.confirmed_fragments[0]
     key_piece_b = key_judicator.confirmed_fragments[2]
     key_piece_c = key_judicator.confirmed_fragments[3][1]
+    
     (key_piece_a + key_piece_b + key_piece_c).to_i
   end
   

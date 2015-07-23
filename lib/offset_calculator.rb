@@ -49,8 +49,6 @@ class OffsetCalculator
   end
   
   def a_offset
-    require 'pry'; binding.pry
-
     date_squared_string[-5].to_i
   end
   
